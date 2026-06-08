@@ -1,4 +1,4 @@
-package cl.duoc.sistema;
+package cl.duoc.sistema.exception;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

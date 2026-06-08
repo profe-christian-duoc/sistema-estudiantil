@@ -1,6 +1,6 @@
 package cl.duoc.sistema.service;
 
-import cl.duoc.sistema.NotFoundException;
+import cl.duoc.sistema.exception.NotFoundException;
 import cl.duoc.sistema.model.Estudiante;
 import cl.duoc.sistema.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
