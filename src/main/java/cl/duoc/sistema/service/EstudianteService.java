@@ -1,5 +1,6 @@
 package cl.duoc.sistema.service;
 
+import cl.duoc.sistema.NotFoundException;
 import cl.duoc.sistema.model.Estudiante;
 import cl.duoc.sistema.repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ public class EstudianteService {
     }
 
     // Buscar un estudiante por su ID
-    public Optional<Estudiante> buscarPorId(Long id) {
-        return estudianteRepository.findById(id);
+    public Estudiante buscarPorId(Long id) {
+        return estudianteRepository.findById(id)
+                .orElseThrow(()->new NotFoundException("Estudiante no encontrado"));
     }
 
     // Eliminar un estudiante por su ID
