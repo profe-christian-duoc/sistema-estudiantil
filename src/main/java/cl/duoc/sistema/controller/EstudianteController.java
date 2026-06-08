@@ -20,15 +20,14 @@ public class EstudianteController {
     @GetMapping
     public ResponseEntity<List<Estudiante>> listarTodos() {
         List<Estudiante> estudiantes = estudianteService.listarTodos();
-        return new ResponseEntity<>(estudiantes, HttpStatus.OK);
+        return ResponseEntity.ok(estudiantes);
     }
 
     // 2. Obtener un estudiante por ID
     @GetMapping("/{id}")
     public ResponseEntity<Estudiante> buscarPorId(@PathVariable Long id) {
-        // Tu service ya lanza la excepción NotFoundException si no existe
         Estudiante estudiante = estudianteService.buscarPorId(id);
-        return new ResponseEntity<>(estudiante, HttpStatus.OK);
+        return ResponseEntity.ok(estudiante);
     }
 
     // 3. Crear un nuevo estudiante
@@ -41,10 +40,9 @@ public class EstudianteController {
     // 4. Eliminar un estudiante
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        // Verificamos si existe antes de borrar
         estudianteService.buscarPorId(id);
         estudianteService.eliminar(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 
     // 5. Obtener el promedio de un estudiante específico
@@ -52,6 +50,6 @@ public class EstudianteController {
     public ResponseEntity<Double> obtenerPromedio(@PathVariable Long id) {
         Estudiante estudiante = estudianteService.buscarPorId(id);
         double promedio = estudianteService.calcularPromedio(estudiante);
-        return new ResponseEntity<>(promedio, HttpStatus.OK);
+        return ResponseEntity.ok(promedio);
     }
 }
