@@ -1,0 +1,9 @@
+CREATE TABLE estudiantes
+(
+    id     BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    nota1 DOUBLE NOT NULL,
+    nota2 DOUBLE NOT NULL,
+    nota3 DOUBLE NOT NULL,
+    asistencia DOUBLE NOT NULL
+);
